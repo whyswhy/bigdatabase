@@ -14,9 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('show', '\App\Http\Controllers\ShowController@show');
-Route::get('index', '\App\Http\Controllers\ShowController@index');
-Route::post('add', '\App\Http\Controllers\ShowController@add');
-Route::get('del', '\App\Http\Controllers\ShowController@del');
-Route::get('up', '\App\Http\Controllers\ShowController@up');
-Route::post('updo', '\App\Http\Controllers\ShowController@updo');
+Route::get('index', '\App\Http\Controllers\IndexController@index');
+Route::get('login', '\App\Http\Controllers\UserController@login');
+Route::post('dologin', '\App\Http\Controllers\UserController@dologin');
+Route::get('register', '\App\Http\Controllers\UserController@register');
+Route::get('shop', '\App\Http\Controllers\IndexController@shop');
+Route::get('list', '\App\Http\Controllers\IndexController@list');
+Route::get('indetial', '\App\Http\Controllers\IndexController@indetial');
+Route::get('order', '\App\Http\Controllers\UserController@order');
+Route::get('self_info', '\App\Http\Controllers\UserController@self_info');
+Route::get('quitlogin', '\App\Http\Controllers\UserController@quitlogin');
+Route::post('addregister', '\App\Http\Controllers\UserController@addregister');
