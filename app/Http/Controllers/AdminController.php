@@ -13,6 +13,10 @@ use App\service\CheckButton;
 use App\service\CheckResource;
 use App\Resource;
 use App\Button;
+use App\Attribute;
+use App\Attributevalue;
+use App\service\CheckValue;
+
 
 class  AdminController extends Controller
 {
@@ -44,11 +48,60 @@ class  AdminController extends Controller
       }
     }
 
+    public function attribute()
+    {     
+      return view("admin/attribute");
+    }
+
+    public function addattr(Request $request)
+    {
+       $reginfo = $request->validate([
+        'attribute_name' => 'required|unique:attributes,attribute_name,',
+         ]);
+      $arr = Attribute::Add($request->attribute_name);
+      if ($arr) {
+          return view("admin/showattrs");
+      } else {
+        return view("admin/attribute");
+      }
+    }
+    
     public function people()
     {     
        $roles = Role::getrole();
-       return view('admin/people',['roles'=>$roles]);
-    
+       return view('admin/people',['roles'=>$roles]);   
+    }
+
+    public function attrvalues()
+    {
+      $attr = Attribute::show();
+      return view("admin/attrvalues",['attr'=>$attr]);
+    }
+
+    public function addattrvalue(Request $request)
+    {
+      $reginfo = $request->validate([
+        'attribute_value' => 'required|unique:attribute_values,attribute_value,',
+        'attr_price'=>['required','regex:/^[0-9]+$/'],
+         ]);
+      $res = CheckValue::data($request);
+      if ($res) {
+        return view("admin/showvalues");
+      } else {
+        return view("admin/attrvalues");
+      }
+    }
+
+    public function showvalues()
+    {
+      $values = Attributevalue::show();
+      return view("admin/showvalues",['values'=>$values]);
+    }
+
+    public function showattrs()
+    {
+      $attr = Attribute::show();
+      return view("admin/showattrs",['attr'=>$attr]);
     }
 
     public function role()

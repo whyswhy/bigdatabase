@@ -48,7 +48,14 @@ Route::group(['middleware' => ['CheckPower']], function () {
      Route::get('admin/showbuttons', '\App\Http\Controllers\AdminController@showbuttons');
      Route::get('admin/goods', '\App\Http\Controllers\AdminController@goods');
      Route::get('admin/up', '\App\Http\Controllers\AdminController@up');
+     Route::get('admin/showattrs', '\App\Http\Controllers\AdminController@showattrs');
+     Route::get('admin/showvalues', '\App\Http\Controllers\AdminController@showvalues');
+     Route::get('admin/attrvalues', '\App\Http\Controllers\AdminController@attrvalues');
+     Route::post('admin/addattr', '\App\Http\Controllers\AdminController@addattr');
+     Route::post('admin/addattrvalue', '\App\Http\Controllers\AdminController@addattrvalue');
+     Route::match(['get','post'],'admin/attribute', '\App\Http\Controllers\AdminController@attribute');
 });
+
 
 
 

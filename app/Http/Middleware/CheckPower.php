@@ -29,6 +29,7 @@ class CheckPower
             }
         }
         return !$state ? die('没有权限') : $next($request);
+        //return $next($request);
         } else {
             echo "您还没有登录!";die();
         }
