@@ -5,10 +5,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Extensions\MongoSessionHandler;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redis;
 use App\service\Checkreg;
 use App\Reg;
 use App\Type;
 use App\Good;
+
 
 class IndexController extends Controller
 {

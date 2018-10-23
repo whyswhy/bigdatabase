@@ -26,7 +26,7 @@ class UserController extends Controller
         $logresult = Log::loginlog($id,$ip);
         if ($result && $logresult) {
             $id = $request->session()->put('id', $result->id);
-            return redirect('index');
+            return redirect('/');
         } else {
             return redirect('login');
         }
@@ -58,7 +58,7 @@ class UserController extends Controller
             $ip = $request->ip();
             $logresult = Log::loginlog($id,$ip);           
             $id = $request->session()->put('id', $id);
-            return redirect('index');
+            return redirect('/');
         } else {
             return view('register');
         }
@@ -72,11 +72,12 @@ class UserController extends Controller
     public function quitlogin(Request $request)
     {
         $id = $request->session()->forget(['id', 'username']);
-        return redirect('index');
+        return redirect('/');
     }
   
     public function self_info()
     {
         return view('self_info');
     }
+
 }
